@@ -1,0 +1,106 @@
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+.modal h3 {
+    padding-bottom: 2%;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+#registerModalBtn, #loginModalBtn {
+    cursor: pointer;
+    color: blue;
+    text-decoration: none;
+    margin-right: 20px;
+    list-style-type: none;
+}
+.loginBtn {
+    padding: .6vh .7vw;
+    margin-top: 2%;
+}
+#links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; 
+}
+#links {
+  display: flex;
+  justify-content: flex-end; /* Đặt nút về phía bên phải */
+  align-items: center; /* Canh giữa theo chiều dọc */
+  margin: 10px 10px 10px 10px;
+}
+.leftRegis {
+    width: 60%;
+    float: left;
+}
+.leftRegis input {
+    width: 75%;
+    padding: .7vh 1vw;
+    margin-top: 1%;
+}
+.leftRegis #text {
+    font-size: 13px;
+}
+.rightRegis {
+    margin-top: 2%;
+    width: 40%;
+    float: left;
+}
+.rightRegis a {
+    text-decoration: none;
+    font-size: 12px;
+}
+#registerButton {
+    padding: 1.5vh 3vw;
+    margin-top: 10%;
+}
+#bodyloginModal {
+    float: left;
+    width: 48%;
+}
+#loginModal {
+    width: 43%;
+}
+#loginModal .rightRegis {
+    padding-left: 2%;
+    width: 40%;
+}
+form table {
+    padding-top: 3%;
+}
+form #text{
+    width: 30% !important;
+}
+form #logText{
+    font-size: 13px;
+    width: 35% !important;
+}
+.forgetpass a {
+    text-decoration: none;
+    font-size: 13px;
+}

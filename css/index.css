@@ -1,0 +1,789 @@
+*{ margin: 0; padding: 0px; font-family: 'Poppins', sans-serif;}
+body{
+    background: #eee;
+    height: 100vh;
+    overflow: none;
+    text-overflow: ellipsis;
+}
+/* a{
+    text-decoration: none;
+    color: #fff;
+} */
+.header{
+    margin: 0;
+    padding: 0;
+    background: #eeeeee;
+    height: 110px;
+    width: 100%;
+}
+#logo{
+    width: 20%;
+    height: 110px;
+    float: left;
+}
+#logo img{
+    width: 60%;
+    /* height: 110px; */
+    margin-top: -2rem;
+    margin-left: 2rem;
+}
+#links {
+    
+}
+/* End of signUp form */
+/* Login  form */
+.loginForm{
+    margin-left: -26.5% !important;
+    width: 30% !important;
+}
+.loginForm a:hover{
+    color: #800080 !important;
+}
+
+/* End of login form */
+/* Search Engine */
+#search form input{
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    width: 55%;
+    height: 35px;
+    padding-left: 2%;
+}
+#search form #btn-search{
+    width: 10%;
+    height: 35px;
+    background: #0a0442;
+    /* background: #b41034; */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: -10px;
+}
+#search form #btn-Cart{
+    width: 10%;
+    height: 35px;
+    background: #0a0442;
+    /* background: #b41034; */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    /* margin-left: -10px;  */
+}
+#search form #btn-Cart:hover, #search form #btn-search:hover{
+    /* border: 1px solid #fff; */
+    background: #09002e;
+}
+#search form #btn-Cart a{
+    display: block;
+}
+#search #cart_count{
+    color: #400040;
+    /* margin-left: 3%; */
+    padding: 2% 5%;
+    background: #fff;
+    border-radius: 50%;
+}
+/* Delete form */
+#alertForm{
+    font-family: 'Mulish', sans-serif;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5% auto;
+    margin-left: 35%;
+    border-radius: 3px;
+    width: 30%;
+    min-height:20%;
+    color: #000;
+    background: #fff;
+    z-index: 999;
+    position: absolute;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.397);
+}
+#alertForm h4{
+    display: block;
+    font-size: 1.5rem;
+    line-height: 35px;
+    margin: 2%;
+    padding: 2%;
+}
+#alertForm p{
+    margin: 2%;
+    padding: 2%;
+}
+#alertForm button{
+    padding: 1%;
+    height: 30px;
+    width: 20%;
+    margin-left: 2%;
+    color: #fff;
+    align-content: flex-start;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#alertForm #ok{
+    margin-left: 50%;
+    background: #f00;
+}
+#alertForm #ok:hover{
+    background: rgb(155, 0, 0);
+}
+#alertForm #can{
+    background: rgb(54, 54, 54);
+}
+#alertForm #can:hover{
+    background: rgb(31, 26, 26);
+}
+/* End of Delete FOrm */
+/* Cart Display */
+.cart {
+    width: 85%;
+    justify-content: center;
+    min-height: 500px;
+    padding: 1%;
+    box-sizing: border-box;
+    background: #fff;
+    margin: auto; /* Add this line to center the cart horizontally */
+    /* margin-top: 2%; */
+}
+
+/* The rest of your CSS remains unchanged */
+
+.cart form table{
+    width: 100%;
+}
+.cart form table tr th{
+    padding-left: 1%;
+    background: #e6e6e6;
+    color: #666;
+    text-align: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+.cart form table tr td{
+    font-size: 16px;
+    padding-left: 1.2%;
+    height: 60px;
+    line-height: 60px;
+}
+.cart form table tr td a{
+    text-decoration: none;
+    padding: 0 5%;
+    color: #000;
+}
+.cart form table tr td button a{
+    color: #fff;
+}
+.cart form table tr td #remove{
+    color: #0a0442;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-left: 30%;
+
+}
+.cart form table tr td img{
+    padding-top: 3%;
+    width: 93px;
+    height: 87px;
+}
+.cart form table tr td #sub, #add{
+    font-size: 0.8;
+}
+.cart form button{
+    width: 180px;
+    height: 30px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5 ease-in-out;
+}
+.cart form  #shopping{
+    background: rgb(0, 255, 0);
+}
+.cart form  #checkOut{
+    background: rgb(225, 0, 0);
+}
+.cart form button:hover{
+    background: #400040 !important;
+}
+.cart form table tr td span{
+    color: #400040;
+    
+}
+
+#search  a{
+    /* display: block; */
+    color: white;
+    text-decoration: none;
+}
+#navbar{
+    overflow: hidden;
+    width: 100%;
+    height: 50px;
+    background: #0a0442;
+}
+#navbar ul{
+    padding-left: 2%;
+    list-style-type: none;
+    /* margin-right: 30px; */
+}
+#navbar ul li{
+    text-transform: uppercase;
+    float: left;
+    padding: 1%;
+    opacity: 1;
+    transition: background 0.3s ease-in-out, border-top 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+#navbar ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+#navbar ul li:hover{
+    background:#400040;
+    border-top: 3px solid #fff;
+    cursor: pointer;
+}
+/* Drop dow */
+#navbar ul li ul{
+    display: none;
+}
+#navbar ul li:hover ul{
+    background: #0a0442;
+    margin-top: 8px;
+    margin-left: -15px;
+    padding-left: 0%;
+    display: block;
+    width: 200px;
+    z-index: 999;
+    position: absolute;
+    box-shadow: 5px 5px 5px #2e2e2e;
+}
+#navbar ul li ul li{
+    text-transform: capitalize !important;
+    border: none !important;
+    float: none;
+    padding-left: 5%;
+    height: 25px;
+    line-height: 25px;
+}
+#navbar ul li ul li a{
+    display: block;
+}
+#navbar ul li ul li:hover{
+    border-top: 2px solid #fff !important;
+    background: #400040;
+    transition: .1;
+}
+
+/* body right */
+#bodyRight{
+    width: 80%;
+    margin: 1%;
+    background: #fff;
+    float: right;
+    border-radius: 3px;
+    padding: 1%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: auto;
+}
+#bodyRight h2{
+    font-size: 2vh;
+    padding-left: 20px;
+    background: #400040;
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    color: #fff;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    text-shadow: 5px 5px 5px #000;
+}
+#bodyRight .not_found{
+    margin-top: 10%;
+    color: grey;
+    height: 45px;
+    line-height: 45px;
+}
+#bodyRight h3{
+    background: #400040;
+    padding-left: 5%;
+    color: #fff;
+    margin-top: 1% ;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 3px;
+    /* text-align: center; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 5px 5px 5px #000;
+    box-shadow: 3px 3px 3px #000;
+}
+#bodyRight ul{
+    list-style-type: none;
+}
+#bodyRight > ul li {
+    margin-top: 3vh;
+    margin-left: 2%;
+    overflow: hidden;
+    width: 21%;
+    height: 19.5em;
+    border: 1px solid #ccc;
+    float: left;
+    border-radius: 10px;
+    position: relative;
+    top: .6rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+#bodyRight ul li:hover {
+    transform: scale(1.06);
+}
+
+#bodyRight ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #2e2e2e;
+    display: block;
+}
+
+#bodyRight ul li a .image-container {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#bodyRight ul li a .image-container img {
+    max-width: 104%; /* Tăng chiều ngang 4% */
+    max-height: 102%; /* Tăng chiều dọc 2% */
+    object-fit: contain;
+    border-radius: 10px;
+    margin: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+#bodyRight ul li:hover a .image-container img {
+    transform: scale(1.1);
+}
+
+#bodyRight ul li:hover a {
+    color: #29a07e;
+}
+
+#bodyRight ul li a h4 {
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+#bodyRight ul li a #c_price {
+    font-family: 'Mulish', sans-serif;
+    position: relative;
+    top: 2.2vw;
+    right: -1.5vw;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    width: 51%;
+    float: left;
+    color: #400040 !important;
+}
+
+#bodyRight ul li a img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+
+
+#bodyRight ul li a center button{
+    width: 30%;
+    height: 30px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #400040;
+}
+#bodyRight ul li a center button:hover{
+    background: #400040;
+}
+#bodyRight ul li a center button:hover a{
+    color: #fff;
+}
+.not_found{
+    margin-top: 10%;
+    color: grey;
+    height: 45px;
+    line-height: 45px;
+
+}
+
+/* product buttons */
+#bodyRight .p_btn{
+    width: 30%;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    margin-top: 5px;
+}
+#bodyRight #cart{
+    position: relative;
+    top: 2.2vw;
+    right: .5vw;
+
+    border-radius: 25px;
+    padding: 9px 8px;
+    width: 13%;
+    float: right;
+    background: #f00;
+    color: #fff !important;
+}
+#bodyRight #wish{
+    position: relative;
+    top: 2.2vw;
+    right: .9vw;
+
+    border-radius: 25px;
+    padding: 9px 8px;
+    width: 13%;
+    float: right;
+    background: #f00;
+    color: #fff !important;
+}
+#bodyRight .p_btn:hover{
+    background: #400040 !important;
+}
+#bodyRight .p_btn:hover a{
+    color: #fff !important;
+}
+#bodyRight .p_btn a{
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+
+/* End of body right */
+/* 
+
+    --------------------------
+    Body left
+    -------------------------
+*/
+
+#bodyLeft h3{
+    font-size: 14px;
+    background: #0a0040;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+#bodyLeft{
+    width: 17%;
+    margin: 1% 1% 1% 0%;
+    background: #fff;
+    float: left;
+    border-radius: 3px;
+    height: 51vh;
+}
+.bodyLeft ul{
+    list-style-type: none;
+}
+.bodyLeft ul li{
+    height: 35px;
+    line-height: 35px;
+    width: 100%;
+    padding-left: 5%;
+}
+
+.bodyLeft ul li a{
+    text-decoration: none;
+    color: #2e2e2e;
+    font-size: 14px;
+    font-weight: bold;
+}
+.bodyLeft ul li a:hover{
+    text-decoration: underline;
+    color: #000;
+}
+.bodyLeft{
+    padding-top: 1.3%;
+    margin-right: -2 !important;
+}
+.bodyLeft h3{
+    margin-top: 2%;
+    background: grey !important;
+}
+/* Slider */
+.mainslider{
+    float: left;
+    width: 65%;
+    height: 360px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+.mainslider .list{
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.mainslider .list img {
+    width: 100%;
+    height: auto;
+    max-width: 100%; 
+    max-height: 360px;
+    object-fit: contain;
+    margin-right: 100px;
+}
+.mainslider .buttons{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+.mainslider .buttons button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+.mainslider .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+.mainslider .dots li{
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.mainslider .dots li.active{
+    width: 30px;
+}
+@media screen and (max-width: 768px){
+    .slider{
+        height: 400px;
+    }
+}
+.subslider {
+    width: 30%;
+    height: 160px;
+    float: left;
+    margin-left: 3%;
+    margin-top: -1%;
+}
+.adsbanner img {
+    margin-top: 2%;
+    width: 100%;
+    height: 178px;
+
+}
+.slider.blurred {
+    filter: blur(5px); /* Adjust the blur intensity as needed */
+}
+
+/* #slider{
+    width: 100%;
+    height: 360px;
+}
+#slider img{
+    width: 100%;
+    height: 360px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+} */
+
+/* FOoter */
+/* #footer{
+    width: 100%;
+    border-radius: 3px;
+    height: 35px;
+    background: #400040;
+    margin-bottom: .1%;
+}
+#footer h4{
+    line-height: 35px;
+    text-align: center;
+    color: #fff;
+} */
+/* #footer a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+} */
+/* Product Details */
+#pro_img{
+    width: 40% ;
+    background: #fff;
+    float: left;
+    padding: 1%;
+    box-sizing: border-box;
+}
+#pro_img img{
+    width: 100%;
+    height: 450px;
+
+}
+#pro_img ul{
+    list-style-type: none;
+    margin-left: 15%;
+}
+#pro_img ul li{
+    float: left;
+}
+#pro_img ul li img{
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+}
+#pro_feature{
+    max-height: 455px;
+    /* background: #fff; */
+    width: 60% ;
+    float: left;
+    padding: 1%;
+    box-sizing: border-box;
+}
+#pro_feature h3{
+    margin-top: 10px;
+    text-align: center;
+    height: 35px;
+    /* border-bottom: 1px solid #6666; */
+}
+#pro_feature p{
+    margin-left: 5%;
+    font-size: 20px;
+    margin-bottom: -15px;
+    margin-top: 1%;
+    font-weight: bold;
+    color: #400040;
+}
+#pro_feature ul{
+    margin-top: 20px;
+    width: 45%;
+    float: left;
+    margin-left: 5%;
+}
+#pro_feature li{
+    margin-left: 5%;
+    /* list-style-type: circle; */
+    height: 35px;
+    line-height: 35px;
+}
+#pro_feature li span{
+    color: #400040;
+    font-weight: bold;
+    margin-right: 1%;
+}
+#pro_feature center form button{
+    width: 180px;
+    height: 30px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
+#pro_feature center form #buy{
+    background: rgb(0, 255, 0);
+}
+#pro_feature center form #cart{
+    background: rgb(255, 0, 0);
+}
+#pro_feature center form button:hover{
+    background:  #400040 !important;
+    cursor: pointer;
+}
+#pro_feature center h3{
+    margin-top: 10%;
+    margin-bottom: 20px;
+}
+#sim_pro{
+    background: #fff;
+    width: 100%;
+    height: 400px;
+    padding-top: 20px;
+}
+#sim_pro h3{
+    font-family: 'Mulish', sans-serif;
+    background: #400040;
+    color: #fff;
+    height: 40px;
+    line-height: 40px;
+    width: 98%;
+    padding-left: 2%;
+}
+#sim_pro ul{
+    list-style-type: none;
+}
+#sim_pro ul li{
+    margin-top: 2%;
+    width: 180px;
+    min-height: 300px;
+    margin-left: 20px;
+    float: left;
+    border: 1px solid #ccc;
+    padding: 0.5%;
+
+}
+#sim_pro ul li:hover{
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px  #400040d0;
+}
+#sim_pro ul li a img{
+    width: 100%;
+    height: 180px;
+}
+#sim_pro ul li a {
+    color: #400040;
+    text-decoration: none;
+}
+#sim_pro ul li a p{
+    text-align: center;
+    font-size: 15px;
+}
