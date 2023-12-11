@@ -111,7 +111,7 @@
             if(!$error){
                 $imgsc = $_FILES['imgsc']['name'];  // Lấy tên file
                 $imgsc_temp = $_FILES['imgsc']['tmp_name'];  // Lấy đường dẫn tạm thời của file
-                move_uploaded_file($imgsc_temp, "../img/products_img/$imgsc");  // Di chuyển file vào đúng thư mục
+                move_uploaded_file($imgsc_temp, "../img/subcat_img/$imgsc");  // Di chuyển file vào đúng thư mục
                 
                 $stmt = $con->prepare("INSERT INTO sub_cat(subcat_name, maincat_id, subcat_img) VALUES (:subcat_name, :main_cat, :imgsc)");
                 $stmt->bindParam(':subcat_name', $subcat_name);
@@ -279,7 +279,7 @@
                         </tr>
                         <tr>
                             <td>Ảnh danh mục mở rộng hiện tại: </td>
-                            <td><img src=\"../img/products_img/".$row['subcat_img']."\" style='max-width: 50px; max-height: 50px;'></td>
+                            <td><img src=\"../img/subcat_img/".$row['subcat_img']."\" style='max-width: 50px; max-height: 50px;'></td>
                         </tr>
                         <tr>
                             <td>Cập nhật ảnh danh mục mở rộng: </td>

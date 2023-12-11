@@ -1,4 +1,5 @@
-*{ margin: 0; padding: 0px; font-family: Verdana, Geneva, Tahoma, sans-serif}
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+*{ margin: 0; padding: 0px; font-family: 'Mulish', sans-serif;}
 body{
     background: #4887c5;
     padding: 1%;

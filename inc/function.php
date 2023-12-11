@@ -1,3 +1,8 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <?php 
     function user_login() {
         require 'db_config.php';
@@ -589,16 +594,16 @@
             // Hiển thị tổng tiền và nút Đặt hàng
             echo "<tr>
                 <td><button id='shopping'><a href='index.php'>Quay lại mua</a></button></td>
-                <td><form method='post'><button id='checkOut' name='checkout_btn'>Đặt hàng</button></form></td>
+                <td><form method='post'><button id='checkOut' name='checkout_btn'>Đặt mua ngay</button></form></td>
                 <td></td>
                 <td></td>
                 <td><b><span>Tổng tiền hàng: </span>".number_format($net_total, 0, ',', '.')." VND</b></td>
                 <td></td>
                 <td></td>
             </tr>";
-    
             if (isset($_POST['checkout_btn'])) {
-                handle_checkout();
+                // Gọi hàm xử lý đặt hàng
+                place_order($user_id);
             }
     
         } else {
@@ -611,40 +616,13 @@
         qty_increase();
     }
     
-    function handle_checkout() {
-        if (isset($_SESSION['user_id'])) {
-            $user_id = $_SESSION['user_id'];
-    
-            // Gọi hàm thêm vào đơn đặt hàng
-            add_to_orders($user_id);
-    
-            // Chuyển hướng hoặc hiển thị thông báo xác nhận
-            echo "<script>alert('Đơn đặt hàng của bạn đã được đặt thành công.');</script>";
-            echo "<script>window.location = 'confirmation.php';</script>";
-        } else {
-            // Nếu người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập
-            echo "<script>alert('Vui lòng đăng nhập để đặt hàng.');</script>";
-            echo "<script>window.location = 'login.php';</script>";
-        }
-    }
-    
-    // Hàm thêm vào đơn đặt hàng
-    function add_to_orders($user_id) {
+    function place_order($user_id) {
         require 'db_config.php';
-        $order_status = 'Đang xử lý';
-    
-        $stmt = $con->prepare("INSERT INTO orders (user_id, product_id, quantity, total_amount, order_status) VALUES (:user_id, :product_id, :quantity, :total_amount, :order_status)");
-    
-        // Duyệt qua giỏ hàng và thêm vào đơn đặt hàng
-        foreach ($_SESSION['cart'] as $cart_item) {
-            $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-            $stmt->bindParam(':product_id', $cart_item['pro_id'], PDO::PARAM_INT);
-            $stmt->bindParam(':quantity', $cart_item['qty'], PDO::PARAM_INT);
-            $stmt->bindParam(':total_amount', ($cart_item['price'] * $cart_item['qty']), PDO::PARAM_INT);
-            $stmt->bindParam(':order_status', $order_status, PDO::PARAM_STR);
-            $stmt->execute();
-        }
+        $stmt = $con->prepare("INSERT INTO orders (user_id, product_id, quantity, total_amount, order_status) SELECT :user_id, cart.pro_id, cart.qty, (products.price * cart.qty), 'Đang xử lý' FROM cart JOIN products ON cart.pro_id = products.pro_id WHERE cart.user_id = :user_id");
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
     }
+    
     
     function delete_cart(){
         require 'db_config.php';

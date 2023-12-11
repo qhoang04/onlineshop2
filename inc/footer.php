@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="././css/footer.css">
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <footer class="footer">
