@@ -1,6 +1,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="./css/contact.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 
 <!-- <link href="../css/contact.css" rel="stylesheet" type="text/css" /> -->
 
@@ -44,12 +46,12 @@
                 <ul>
                 </ul>
             </li>
-            <li>
+            <!-- <li>
                 <a href="#">Tuyển dụng</a>
                 <ul>
                     <li><a href="#">Các vị trí</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li>
                 <a href="#" id="contactModalBtn">Liên hệ - Thông tin</a>
             </li>
@@ -73,3 +75,4 @@
         }
 
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

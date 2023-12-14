@@ -93,7 +93,7 @@ if (session_status() == PHP_SESSION_NONE) {
             $stmt->bindParam(':pass', $hashed_password);
             $stmt->bindParam(':regdate', $today);
             if($stmt->execute()){  
-                echo "<script>alert('Tài khoản đăng kí thành công!')</script>";
+                echo "<script> alert('Đăng kí tài khoản thành công!'); </script>";
                 echo "<script>window.open('index.php', '_self')</script>";
             }else{
                 echo "<script>alert('Xin lỗi, hãy thử lại!')</script>";
@@ -603,7 +603,7 @@ if (session_status() == PHP_SESSION_NONE) {
             </tr>";
             if (isset($_POST['checkout_btn'])) {
                 // Gọi hàm xử lý đặt hàng
-                place_order($user_id);
+                echo "<script>window.open('inc/payment.php', '_self')</script>";
             }
     
         } else {
