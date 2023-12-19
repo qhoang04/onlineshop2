@@ -182,11 +182,13 @@ if (session_status() == PHP_SESSION_NONE) {
         document.getElementById(modalId).style.display = 'block';
         document.querySelector('.overlay').style.display = 'block';
         document.querySelector('.slider').classList.add('blurred');
+        document.querySelector('#bodyRight').classList.add('blurred');
     }
 
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.slider').classList.remove('blurred');
+        document.querySelector('#bodyRight').classList.remove('blurred');
     }
 </script>
