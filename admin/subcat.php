@@ -1,5 +1,5 @@
 <?php   include './inc/function.php';?>
-<div id = "bodyRight">
+<div id = "bodyRight" class="tablecate">
     <h3>Hiển thị tất cả danh mục mở rộng</h3>
     <form action="" method="POST" autocomplete = "off" enctype="multipart/form-data">
         <table >

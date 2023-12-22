@@ -31,8 +31,10 @@
         <!-- <div id="slider">
             <img src="./img/slider/bg.jpg" alt="" width="300">
         </div> -->
-        <ul>
-        <?php displayAllCategories(); ?>
-        </ul><br clear = 'All'>
+        <div class="product_by_cate">
+            <ul>
+                <?php displayAllCategories(); ?>
+            </ul><br clear = 'All'>
+        </div>
         <?php } ?>
     </div><!--End of body left-->

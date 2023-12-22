@@ -620,11 +620,22 @@ if (session_status() == PHP_SESSION_NONE) {
         }
     }
     function place_order($user_id) {
-        require 'db_config.php';
-        $stmt = $con->prepare("INSERT INTO orders (user_id, product_id, quantity, total_amount, order_status) SELECT :user_id, cart.pro_id, cart.qty, (products.price * cart.qty), 'Đang xử lý' FROM cart JOIN products ON cart.pro_id = products.pro_id WHERE cart.user_id = :user_id");
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->execute();
-    }
+    require 'db_config.php';
+    
+    $stmt = $con->prepare("
+        INSERT INTO orders (user_id, product_id, quantity, total_amount, order_status, address, city) 
+        SELECT :user_id, cart.pro_id, cart.qty, (products.price * cart.qty), 'Đang xử lý', users.address, users.city
+        FROM cart 
+        JOIN products ON cart.pro_id = products.pro_id 
+        JOIN users ON cart.user_id = users.user_id
+        WHERE cart.user_id = :user_id
+    ");
+    
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
+    
     function clear_cart($user_id) {
         require 'db_config.php';
         $stmt = $con->prepare("DELETE FROM cart WHERE user_id = :user_id");

@@ -104,3 +104,6 @@ form #logText{
     text-decoration: none;
     font-size: 13px;
 }
+.blurred {
+    filter: blur(5px);
+}

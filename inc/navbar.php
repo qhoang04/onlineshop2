@@ -72,6 +72,7 @@
             document.getElementById(modalId).style.display = 'block';
             document.querySelector('.overlay').style.display = 'block';
             document.querySelector('.slider').classList.add('blurred');
+            document.querySelector('.product_by_cate').classList.add('blurred');
         }
 
     </script>

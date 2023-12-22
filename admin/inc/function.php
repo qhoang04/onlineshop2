@@ -15,6 +15,27 @@
         </tr>";
         endwhile;
     }
+    function view_order() {
+        require './inc/db_config.php';
+        $stmt = $con->prepare("SELECT * FROM orders order by user_id DESC");
+        $stmt->setFetchMode(PDO:: FETCH_ASSOC);
+        $stmt->execute();
+        $i = 1;
+        while($row = $stmt->fetch()):
+            echo "<tr>
+                <td style='width: 11%;'>".$row['order_id']."</td>
+                <td style='width: 13%;'>".$row['user_id']."</td>
+                <td style='width: 13%;'>".$row['product_id']."</td>
+                <td style='width: 13%;'>".$row['quantity']."</td>
+                <td style='width: 12%;'>".number_format($row['total_amount'], 0, ',', '.')." đ</td>
+                <td style='width: 13%;'>".$row['order_status']."</td>
+                <td style='width: 18%;'>".$row['order_date']."</td>
+                <td style='width: 18%;'>".$row['address'].', '.$row['city']."</td>
+            </tr>";
+            endwhile;
+    }
+
+
     function view_product(){
         require './inc/db_config.php';
         $stmt = $con->prepare("SELECT * FROM products order by date_added DESC");
@@ -39,7 +60,7 @@
             <td>".$row['feature2']."</td>
             <td>".$row['feature3']."</td>
             <td>".$row['feature4']."</td>
-            <td>".$row['price']."</td>
+            <td>".number_format($row['price'], 0, ',', '.')." đ</td>
             <td>".$row['pro_model']."</td>
             <td>".$row['warranty']."</td>
             <td>".$row['keyword']."</td>
@@ -55,11 +76,11 @@
         $i = 1;
         while($row = $stmt->fetch()):
         echo "<tr>
-        <td>".$i++."</td>
+        <td style='width: 20%;'>".$i++."</td>
         <td>".$row['subcat_name']."</td>
         <td style = 'min-width:200px'><a href = 'index.php?edit_subcat&&subcategory_id=".$row['subcat_id']."'  id = 'edi'>Sửa</a></td>
         <td style = 'min-width:200px'><a href = 'index.php?delete_subcat&&subcategory_id=".$row['subcat_id']."' id = 'del'>Xóa</a></td>
-        <td style='width: 150px;'><img src=\"../img/products_img/".$row['subcat_img']."\" width='150' height='150'></td>
+        <td style='width: 150px;'><img src=\"../img/products_img/".$row['subcat_img']."\" width='50' height='50'></td>
         </tr>";
         endwhile;
     }

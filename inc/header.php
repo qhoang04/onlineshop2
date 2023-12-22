@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="././css/modal.css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+</style>
 <div class="header">
     <div id="logo">
         <a href="index.php">
@@ -183,13 +183,13 @@ if (session_status() == PHP_SESSION_NONE) {
         document.getElementById(modalId).style.display = 'block';
         document.querySelector('.overlay').style.display = 'block';
         document.querySelector('.slider').classList.add('blurred');
-        document.querySelector('#bodyRight').classList.add('blurred');
     }
 
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = 'none';
         document.querySelector('.overlay').style.display = 'none';
         document.querySelector('.slider').classList.remove('blurred');
-        document.querySelector('#bodyRight').classList.remove('blurred');
+        document.querySelector('.product_by_cate').classList.remove('blurred');
     }
+
 </script>
