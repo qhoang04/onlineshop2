@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="./assets/fontawesome/scss/_animated.scss">
     <link rel="stylesheet" href="./assets/fontawesome/scss/_icons.scss">
-
 </head>
 <body>
     

@@ -1,40 +1,52 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Toastr -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-<?php 
+<?php
     function user_login() {
         require 'db_config.php';
-    
+
         if (isset($_POST['login'])) {
             $formError = false;
-    
+
             $u_email = strip_tags($_POST['email']);
             $u_email = htmlspecialchars($u_email);
-    
+
             $u_password = strip_tags($_POST['password']);
             $u_password = htmlspecialchars($u_password);
-    
+
             // Fetch user data from the database
             $stmt = $con->prepare("SELECT * FROM users WHERE email = :email");
             $stmt->bindParam(':email', $u_email);
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $stmt->execute();
-    
+
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch();
                 $hashed_password_from_db = $row['password'];
-    
 
                 if (password_verify($u_password, $hashed_password_from_db)) {
                     session_start();
                     $_SESSION['user_id'] = $row['user_id'];
                     $_SESSION['user_email'] = $u_email;
                     $_SESSION['username'] = $row['user_name'];
-    
-                    echo "<script>alert('Xin chào " .$row['user_name']."')</script>";
-                    echo "<script>window.open('index.php', '_self')</script>";
+                    echo "<script>
+                            swal({
+                                title: 'Đăng nhập thành công',
+                                text: 'Xin chào ".$row['user_name']."',
+                                icon: 'success',
+                                button: 'Đồng ý',
+                            }).then((result) => {
+                                if (result) {
+                                    window.open('index.php', '_self');
+                                }
+                            });
+                        </script>";
                 } else {
                     // Password is incorrect
                     echo "<script>alert('Incorrect password')</script>";
@@ -47,6 +59,8 @@ if (session_status() == PHP_SESSION_NONE) {
             }
         }
     }
+
+
     
     
     
@@ -93,8 +107,18 @@ if (session_status() == PHP_SESSION_NONE) {
             $stmt->bindParam(':pass', $hashed_password);
             $stmt->bindParam(':regdate', $today);
             if($stmt->execute()){  
-                echo "<script> alert('Đăng kí tài khoản thành công!'); </script>";
-                echo "<script>window.open('index.php', '_self')</script>";
+                echo "<script>
+                            swal({
+                                title: 'Đăng kí tài khoản thành công',
+                                text: 'Bạn có thể sử dụng tài khoản này để đăng nhập',
+                                icon: 'success',
+                                button: 'Đồng ý',
+                            }).then((result) => {
+                                if (result) {
+                                    window.open('index.php', '_self');
+                                }
+                            });
+                        </script>";
             }else{
                 echo "<script>alert('Xin lỗi, hãy thử lại!')</script>";
             }
@@ -425,18 +449,27 @@ if (session_status() == PHP_SESSION_NONE) {
             while($row = $stmt->fetch()):
                 echo "<li>
                         <form method='POST' enctype='multipart/form-data'>
-                            <a href = 'pro_detail.php?&pro_id=".$row['pro_id']."'>
-                            <img src = './img/products_img/".$row['img1']."' alt = 'img'>
-                            <h4>".$row['product_name']."</h4>
-                            <h4 id = 'c_price'><small>".number_format($row['price'], 0, ',', '.')."</small> <span style='text-decoration: underline; font-size: 1.1rem'>đ</span></h4>
-                            <center>
-                                <input type = 'hidden' value = '".$row['pro_id']."' name='pro_id'>
-                                <button name = 'cart_btn' class = 'add-to-cart-btn'id = 'cart'>Thêm giỏ hàng</button>
-                                <button class = 'p_btn'id = 'wish'><a href = '#'>Yêu thích</a></button>
-                            </center>
+                            <a href='pro_detail.php?&pro_id=".$row['pro_id']."'>
+                                <div class='image-container'>
+                                    <img src='./img/products_img/".$row['img1']."' alt='img'>
+                                </div>
+                                <h4>".$row['product_name']."</h4>
+                                <div id='c_price'>
+                                    <small>" . number_format($row['price'], 0, ',', '.') ."</small>
+                                    <span style='text-decoration: underline; font-size: 1.1rem'>đ</span>
+                                </div>
+                                <center>
+                                    <input type='hidden' value='".$row['pro_id']."' name='pro_id'>
+                                    <a href='#' id='cart' class='add-to-cart-btn'>
+                                        <i class='fas fa-shopping-cart'></i>
+                                    </a>
+                                    <a href='#' id='wish'>
+                                        <i class='fa-solid fa-heart'></i>
+                                    </a>
+                                </center>
                             </a>
                         </form>
-                        </li>";
+                    </li>";
                 echo "";
             endwhile;
             }else{
@@ -479,6 +512,28 @@ if (session_status() == PHP_SESSION_NONE) {
                 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     
                 if ($stmt->execute()) {
+                    echo '
+                        <script>
+                                toastr.options = {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-right",
+                                    "preventDuplicates": false,
+                                    "onclick": null,
+                                    "showDuration": "300",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                }
+                                toastr["success"]("Thêm vào giỏ hàng thành công!")
+                        </script>
+                    ';
                     echo json_encode(array('status' => 'success'));
                     exit;
                 } else {
@@ -491,6 +546,28 @@ if (session_status() == PHP_SESSION_NONE) {
                 $updateStmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     
                 if ($updateStmt->execute()) {
+                    echo '
+                        <script>
+                                toastr.options = {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "newestOnTop": false,
+                                    "progressBar": true,
+                                    "positionClass": "toast-bottom-right",
+                                    "preventDuplicates": false,
+                                    "onclick": null,
+                                    "showDuration": "300",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                }
+                                toastr["success"]("Đã thêm số lượng sản phẩm")
+                        </script>
+                    ';
                     echo json_encode(array('status' => 'success'));
                     exit;
                 } else {
@@ -545,6 +622,12 @@ if (session_status() == PHP_SESSION_NONE) {
     function place_order($user_id) {
         require 'db_config.php';
         $stmt = $con->prepare("INSERT INTO orders (user_id, product_id, quantity, total_amount, order_status) SELECT :user_id, cart.pro_id, cart.qty, (products.price * cart.qty), 'Đang xử lý' FROM cart JOIN products ON cart.pro_id = products.pro_id WHERE cart.user_id = :user_id");
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    function clear_cart($user_id) {
+        require 'db_config.php';
+        $stmt = $con->prepare("DELETE FROM cart WHERE user_id = :user_id");
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->execute();
     }

@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "Payment Method: " . $paymentMethod;
 
   if ($paymentMethod == 'cod') {
-    echo "<script>window.location.href = 'successpay.php';</script>";
+    echo "<script>window.location.href = 'successpay.php?status=completepay';</script>";
     exit();
 }
   else if ($paymentMethod == 'vnpay') {
@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>
                     <a href="#"><?php echo $item['product_name']; ?></a>
                     <span class="quantity">SL: <?php echo $item['quantity']; ?></span>
-                    <span class="price"><?php echo $item['price']; ?></span>
+                    <span class="price"><?php echo number_format($item['price'],0, ',', '.'); ?></span>
                 </p>
             <?php endforeach; ?>
             <hr>
@@ -196,13 +196,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="col-50">
           <h3>Thông tin khách hàng</h3>
           <label for="fname"><i class="fa fa-user"></i> Họ và tên</label>
-          <input type="text" id="fname" name="firstname" placeholder="Nhập họ và tên" value="<?php echo $customerInfo['user_name']; ?>" readonly>
+          <input type="text" id="fname" name="firstname" placeholder="Nhập họ và tên" value="<?php echo $customerInfo['user_name']; ?>">
           <label for="email"><i class="fa fa-envelope"></i> Email</label>
-          <input type="text" id="email" name="email" placeholder="Nhập email" value="<?php echo $customerInfo['email']; ?>" readonly>
+          <input type="text" id="email" name="email" placeholder="Nhập email" value="<?php echo $customerInfo['email']; ?>">
           <label for="adr"><i class="fa fa-address-card-o"></i> Địa chỉ</label>
-          <input type="text" id="adr" name="address" placeholder="Nhập địa chỉ" value="<?php echo $customerInfo['address']; ?>" readonly>
+          <input type="text" id="adr" name="address" placeholder="Nhập địa chỉ" value="<?php echo $customerInfo['address']; ?>">
           <label for="city"><i class="fa fa-institution"></i> Thành phố</label>
-          <input type="text" id="city" name="city" placeholder="Nhập thành phố" value="<?php echo $customerInfo['city']; ?>" readonly>
+          <input type="text" id="city" name="city" placeholder="Nhập thành phố" value="<?php echo $customerInfo['city']; ?>">
 
           <div class="row">
               <div class="col-50">
@@ -214,30 +214,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
           <div class="col-50">
             <h3>Phương thức thanh toán</h3>
-            <fieldset>
-                <legend>Chấp nhận thanh toán qua</legend>
+                <fieldset>
+                    <legend>Chấp nhận thanh toán qua</legend>
 
-                <div class="form__radios">
-                    <div class="form__radio">
-                    <label for="momo"><img class="icon" src="./img/pay_img/momo.png" alt="Momo Icon">Momo</label>
-                    <input id="momo" name="payment-method" type="radio" value="momo" />
+                    <div class="form__radios">
+                        <!-- <div class="form__radio">
+                            <label for="momo">
+                                <img class="icon" src="./img/pay_img/momo.png" alt="Momo Icon">Momo
+                            </label>
+                            <div class="sub-menu-wrap" id="subMenu">
+                                <div class="sub-menu">
+                                    <label class="sub-menu-link">
+                                        <input type="radio" name="payment-method" value="momo-qr">
+                                        Momo QR
+                                    </label>
+                                    <label class="sub-menu-link">
+                                        <input type="radio" name="payment-method" value="momo-atm">
+                                        Momo ATM
+                                    </label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="form__radio">
+                            <label for="vnpay">
+                                <img class="icon" src="../img/pay_img/vnpay.png" alt="VN PAY Icon">VN Pay
+                            </label>
+                            <input id="vnpay" name="payment-method" type="radio" value="vnpay" />
+                        </div>
+
+                        <div class="form__radio">
+                            <label for="cod">
+                                <img class="icon" src="../img/pay_img/cod.png" alt="VN PAY Icon">Thanh toán khi nhận hàng
+                            </label>
+                            <input id="cod" name="payment-method" type="radio" value="cod" />
+                        </div>
                     </div>
-
-                    <div class="form__radio">
-                    <label for="vnpay"><img class="icon" src="./img/pay_img/vnpay.png" alt="Momo Icon">VN PAY</label>
-                    <input id="vnpay" name="payment-method" type="radio" value="vnpay" />
-                    </div>
-
-                    <div class="form__radio">
-                      <label for="cod">
-                          <svg class="icon">
-                              <i class="fa-solid fa-truck-fast"></i>
-                          </svg>Thanh toán khi nhận hàng
-                      </label>
-                      <input id="cod" name="payment-method" type="radio" value="cod" />
-                  </div>
-                </div>
-            </fieldset>
+                </fieldset>
 
                 
             <div class="row">
@@ -251,5 +264,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </div>
 </body>
+<script>
+    function toggleMenu() {
+    subMenu.classList.toggle("open-menu");
+
+    // Lấy giá trị của radio button "Momo"
+    var momoOption = document.querySelector('input[name="momo-option"]:checked');
+
+    // Ẩn/hiện submenu tùy thuộc vào lựa chọn của radio button "Momo"
+    if (momoOption && momoOption.value === "qr") {
+        // Hiển thị submenu cho Momo QR
+        subMenu.classList.add("open-menu");
+    } else {
+        // Ẩn submenu cho Momo ATM hoặc khi không có lựa chọn
+        subMenu.classList.remove("open-menu");
+    }
+}
+
+</script>
 
 
