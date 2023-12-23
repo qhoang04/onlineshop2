@@ -642,4 +642,23 @@ if (session_status() == PHP_SESSION_NONE) {
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    function get_order_details($user_id) {
+        require 'db_config.php';
+        $stmt = $con->prepare("
+        SELECT 
+            orders.*, 
+            users.user_name AS user_name, 
+            users.email AS email, 
+            users.address AS address
+        FROM orders
+        JOIN users ON orders.user_id = users.user_id
+        WHERE orders.user_id = :user_id
+        ORDER BY orders.order_date DESC 
+        LIMIT 1
+    ");
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 ?>

@@ -21,7 +21,8 @@
         require './inc/function.php'; 
         require './inc/header.php'; 
         require './inc/navbar.php'; 
-        pro_details($_SESSION['user_id']);
+        $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        pro_details($user_id);
         include './inc/footer.php';
     ?>
 

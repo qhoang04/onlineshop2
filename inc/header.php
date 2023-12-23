@@ -20,13 +20,13 @@ if (session_status() == PHP_SESSION_NONE) {
             <p>Bạn có chắc chắn muốn đăng xuất?</p>
             <center>
                 <button onclick="logout()">Đăng xuất</button>
-                <button onclick="closeModal('logoutModal')">Hủy</button>
+                <button class="lo" onclick="closeModal('logoutModal')">Hủy</button>
             </center>
         </div>
     <?php
         if (isset($_SESSION['user_id'])) {
             echo '<span>Xin chào, ' . $_SESSION['username'] . '</span>';
-            echo '<button onclick="openLogoutModal()">Đăng xuất</button>';
+            echo '<button class="logout_btn" onclick="openLogoutModal()">Đăng xuất</button>';
         } else {
             echo '<ul>
                     <li id="registerModalBtn">
@@ -144,7 +144,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="overlay"></div>
     <div id="search">
         <form action="search.php" method='GET' enctype='multipart/form-data' autocomplete='off'>
-            <input type="text" name='user_search' placeholder="nhập tên sản phẩm cần tìm kiếm.....">
+            <input type="text" name='user_search' placeholder="nhập từ khóa cần tìm kiếm.....">
             <button name="btn_search" id="btn-search">Tìm kiếm</button>
             <button type="button" id="btn-Cart" onclick="checkLoginAndOpenCart()">Giỏ hàng <span id='cart_count'><?php echo isset($_SESSION['user_id']) ? cart_count($_SESSION['user_id']) : '0'; ?></span></button>
 

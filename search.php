@@ -23,9 +23,11 @@
         include './inc/navbar.php'; 
         search();
         include './inc/bodyleft.php'; 
-        // include './inc/footer.php';
+        include './inc/footer.php';
 
-        echo add_cart();
+        if (isset($_SESSION['user_id'])) {
+            echo add_cart($_SESSION['user_id']);
+        }
     ?>
 
 

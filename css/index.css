@@ -30,6 +30,11 @@ body{
 #links {
     
 }
+.logout_btn {
+    cursor: pointer;
+    border: none;
+    margin: 2px 10px;
+}
 /* End of signUp form */
 /* Login  form */
 .loginForm{
