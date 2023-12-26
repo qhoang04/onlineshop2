@@ -23,6 +23,7 @@
     }
     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
     $order_details = get_order_details($user_id);
+	$total_pay = 0;
 ?>
 
 
@@ -191,6 +192,7 @@
                         if (isset($_GET['vnp_Amount'])) {
                             $vnp_Amount = $_GET['vnp_Amount'];
                             echo "VNPay";
+							$total_pay = $vnp_Amount;
                         }
                     ?></td>
 				</tr>
@@ -222,7 +224,7 @@
 				<tr class="total">
 					<td></td>
 
-					<td>Tổng cộng: <?php echo number_format(($vnp_Amount)/100,0, ',', '.'); ?> đ</td>
+					<td>Tổng cộng: <?php echo number_format(($total_pay)/100,0, ',', '.'); ?> đ</td>
 				</tr>
                 <tr>
                     <td><a href="../index.php">Quay lại trang chủ</a></td>

@@ -493,7 +493,7 @@ if (session_status() == PHP_SESSION_NONE) {
     function add_cart($user_id) {
         require 'db_config.php';
     
-        if (isset($_POST['cart_btn'])) {
+        if (isset($_POST['cart_btn']) && isset($_SESSION['user_id']) ) {
             $pro_id = $_POST['pro_id'];
             $ip = getIp();
     
